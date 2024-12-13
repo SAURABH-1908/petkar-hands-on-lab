@@ -1,0 +1,126 @@
+fileVersion: 1
+id: 15f84574-b7bd-46f4-8d86-a73cac1badca
+name: DVSTG_NATION
+operation:
+  config:
+    contains_multiactive_data: false
+    generate_ghost_records: true
+  database: ""
+  deployEnabled: true
+  description: Nation data as defined by TPC-H
+  isMultisource: false
+  locationName: WORK
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cc0bcfbb-ab16-4138-b7b2-fa9427b3a76c
+          stepCounter: 15f84574-b7bd-46f4-8d86-a73cac1badca
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: N_NATIONKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9838ce7b-a8d2-4395-9a77-6791ffa76de0
+                stepCounter: 986e3a4b-cfaf-4777-a448-2682f1a5481b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e829de9f-a400-4133-b402-b31e1244bf3c
+          stepCounter: 15f84574-b7bd-46f4-8d86-a73cac1badca
+        config: {}
+        dataType: VARCHAR(25)
+        description: ""
+        name: N_NAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9e2cf1e8-a72d-4d19-afc6-055efd450bd6
+                stepCounter: 986e3a4b-cfaf-4777-a448-2682f1a5481b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2152346c-6686-4f04-aec3-dd2f541d2e9e
+          stepCounter: 15f84574-b7bd-46f4-8d86-a73cac1badca
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: N_REGIONKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 163274a3-2d64-4e17-996a-8b93b654a450
+                stepCounter: 986e3a4b-cfaf-4777-a448-2682f1a5481b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aafc8854-4d78-4fc5-ba6c-ad746eba30eb
+          stepCounter: 15f84574-b7bd-46f4-8d86-a73cac1badca
+        config: {}
+        dataType: VARCHAR(152)
+        description: ""
+        name: N_COMMENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: babd2f49-b844-4f9a-809f-27a9fffccd68
+                stepCounter: 986e3a4b-cfaf-4777-a448-2682f1a5481b
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0413ef2e-16d3-40bf-86a1-71087f6d9887
+          stepCounter: 15f84574-b7bd-46f4-8d86-a73cac1badca
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: The Load Date Timestamp (LDTS) describes when this data first arrived in the Data Warehouse.
+        is_system_ldts: true
+        name: LDTS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: SYSDATE()
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23b6dfe9-f888-4b9c-aaf2-6e5e488b9169
+          stepCounter: 15f84574-b7bd-46f4-8d86-a73cac1badca
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: The Record Source (RSRC) describes the source of this data.
+        is_system_rsrc: true
+        name: RSRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "{{record_source()}}"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: NATION
+        join:
+          joinCondition: FROM {{ ref('SRC', 'NATION') }} "NATION"
+        name: DVSTG_NATION
+        noLinkRefs: []
+  name: DVSTG_NATION
+  overrideSQL: false
+  schema: ""
+  sqlType: Datavault-by-Scalefree:::4
+  type: sql
+  version: 1
+type: Node
